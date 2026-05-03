@@ -11,7 +11,7 @@
 
 - **Frontend:** React, Redux, Axios, CSS.
 - **Backend:** Node.js, Express.js.
-- **Database:** MongoDB or PostgreSQL.
+- **Database:** MongoDB Atlas or PostgreSQL.
 - **Deployment:** Docker, Kubernetes.
 
 ## Frontend Architecture

@@ -4,7 +4,7 @@
 Before you begin, ensure you have the following software installed:
 - Node.js (version X.X.X or higher)
 - npm (Node Package Manager)
-- MongoDB (version X.X.X or higher)
+- MongoDB Atlas (cloud-based database)
 
 ## Installation Steps
 1. Clone the repository:
@@ -24,20 +24,17 @@ Before you begin, ensure you have the following software installed:
 1. Create a `.env` file in the root directory of the project.
 2. Add the following environment variables:
    ```ini
-   DB_URI=mongodb://localhost:27017/localconnect
+   DB_URI=mongodb+srv://username:password@cluster.mongodb.net/localconnect
    PORT=3000
    ```
 
 ## Database Setup
-1. Start MongoDB server:
-   ```bash
-   mongod
-   ```
-2. Optionally, create a database named `localconnect`:
-   ```bash
-   mongo
-   use localconnect
-   ````
+1. Set up MongoDB Atlas:
+   - Go to https://cloud.mongodb.com/
+   - Create a free account and cluster
+   - Get your connection string from Atlas dashboard
+   - Replace username/password in the DB_URI above
+2. Your database will be created automatically on first connection`
 
 ## Running the Application
 1. Start the application:
@@ -51,7 +48,7 @@ Before you begin, ensure you have the following software installed:
    ```bash
    npm install --force
    ```
-- Check MongoDB logs for connection issues.
+- Check MongoDB Atlas logs for connection issues.
 - Ensure your Node.js version is compatible by checking with:
    ```bash
    node -v
