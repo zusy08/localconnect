@@ -23,8 +23,7 @@ export default defineConfig({
         'better-sqlite3',
         'sqlite3',
         'mysql2',
-        'pg',
-        'zod'
+        'pg'
       ],
     },
   },
