@@ -1,6 +1,6 @@
 // API Configuration for production deployment
-export const API_BASE_URL = process.env.NODE_ENV === 'production' 
-  ? 'https://your-render-app-name.onrender.com' // Replace with your Render URL
+export const API_BASE_URL = import.meta.env.PROD 
+  ? import.meta.env.VITE_API_BASE_URL || 'https://your-render-app-name.onrender.com'
   : 'http://localhost:5000';
 
 // Helper function to create full API URLs
