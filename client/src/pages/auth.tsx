@@ -32,8 +32,28 @@ export function LoginPage() {
 
   const loginMutation = useMutation({
     mutationFn: async (data: LoginData) => {
+      console.log('Sending login data:', data);
       const res = await apiRequest("POST", "/api/auth/login", data);
-      return res.json();
+      const responseText = await res.text();
+      console.log('Login server response:', responseText);
+      try {
+        // Try to parse the entire response first
+        return JSON.parse(responseText);
+      } catch (e) {
+        console.error('Failed to parse login JSON:', e);
+        // If that fails, try to extract JSON from the beginning of the response
+        try {
+          const jsonMatch = responseText.match(/\{[\s\S]*\}/);
+          if (jsonMatch) {
+            const jsonData = jsonMatch[0];
+            console.log('Extracted JSON:', jsonData);
+            return JSON.parse(jsonData);
+          }
+        } catch (extractError) {
+          console.error('Failed to extract JSON:', extractError);
+        }
+        throw new Error('Invalid JSON response from server');
+      }
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/auth/user"] });
@@ -139,8 +159,28 @@ export function SignupPage() {
 
   const signupMutation = useMutation({
     mutationFn: async (data: SignupData) => {
+      console.log('Sending signup data:', data);
       const res = await apiRequest("POST", "/api/auth/signup", data);
-      return res.json();
+      const responseText = await res.text();
+      console.log('Server response:', responseText);
+      try {
+        // Try to parse the entire response first
+        return JSON.parse(responseText);
+      } catch (e) {
+        console.error('Failed to parse JSON:', e);
+        // If that fails, try to extract JSON from the beginning of the response
+        try {
+          const jsonMatch = responseText.match(/\{[\s\S]*\}/);
+          if (jsonMatch) {
+            const jsonData = jsonMatch[0];
+            console.log('Extracted JSON:', jsonData);
+            return JSON.parse(jsonData);
+          }
+        } catch (extractError) {
+          console.error('Failed to extract JSON:', extractError);
+        }
+        throw new Error('Invalid JSON response from server');
+      }
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["/api/auth/user"] });

@@ -19,6 +19,11 @@ const allowlist = [
   "zod-validation-error",
 ];
 
+// Native modules that need to be bundled
+const nativeModules = [
+  "better-sqlite3"
+];
+
 async function buildAll() {
   await rm("dist", { recursive: true, force: true });
 

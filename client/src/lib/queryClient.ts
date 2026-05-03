@@ -4,6 +4,7 @@ import { createApiUrl } from "./api";
 async function throwIfResNotOk(res: Response) {
   if (!res.ok) {
     const text = (await res.text()) || res.statusText;
+    console.error('Server response:', text);
     throw new Error(`${res.status}: ${text}`);
   }
 }
