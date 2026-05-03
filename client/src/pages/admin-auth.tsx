@@ -3,7 +3,7 @@ import { useLocation, Link } from "wouter";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
-import { loginSchema, adminSignupSchema, type LoginData, type AdminSignupData } from "@shared/models/auth";
+import { loginSchema, adminSignupSchema, type LoginData, type AdminSignupData } from "@/lib/validation";
 import { queryClient, apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
