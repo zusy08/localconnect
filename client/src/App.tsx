@@ -49,7 +49,9 @@ function AppContent() {
   return (
     <>
       <Navbar />
-      <Router />
+      <div className="min-h-screen bg-background text-foreground">
+        <Router />
+      </div>
       <Toaster />
       <ProfileSetupModal
         open={showSetup}
